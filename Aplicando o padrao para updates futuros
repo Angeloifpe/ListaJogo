@@ -1,0 +1,30 @@
+
+novos updates para novas fases vao ser adicionados então com o padrão factory facilita isso podemos observas nas classes que ja exiostem para ter uma ideia de como vai ficar 
+
+
+
+
+
+
+
+abstract class LocalizacaoJogo {
+    public abstract Inimigo criarInimigo();
+
+    public void iniciarCombate() {
+        Inimigo inimigo = criarInimigo();
+        inimigo.atacar();
+    }
+}
+
+class AmazoniaFase extends LocalizacaoJogo {
+    @Override
+    public Inimigo criarInimigo() {
+        return new AnimalMutante();
+    }
+}
+
+class SertaoFase extends LocalizacaoJogo {
+    @Override
+    public Inimigo criarInimigo() {
+        return new Cangaceiro();
+    }
