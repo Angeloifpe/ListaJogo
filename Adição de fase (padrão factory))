@@ -1,0 +1,15 @@
+a respeito do padrao factory para adiconar novas fases
+
+abstract class LocalizacaoJogo {
+    // AQUI ESTÁ O FACTORY METHOD:
+    // Um método abstrato que promete retornar um "Inimigo" genérico.
+    public abstract Inimigo criarInimigo(); 
+}
+
+
+class SertaoFase extends LocalizacaoJogo {
+    @Override
+    public Inimigo criarInimigo() {
+        return new Cangaceiro();
+    }
+}
