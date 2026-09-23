@@ -1,0 +1,54 @@
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Iniciando GAME  \n");
+
+        LocalizacaoJogo faseAmazonia = new AmazoniaFase();
+        faseAmazonia.iniciarCombate();
+
+        System.out.println();
+
+        LocalizacaoJogo faseSertao = new SertaoFase();
+        faseSertao.iniciarCombate();
+    }
+}
+
+interface Inimigo {
+    void atacar();
+}
+
+class AnimalMutante implements Inimigo {
+    @Override
+    public void atacar() {
+        System.out.println("[FaseAmazônia] Um Animal mutante Pulou e atacou o jogador!");
+    }
+}
+
+class Cangaceiro implements Inimigo {
+    @Override
+    public void atacar() {
+        System.out.println("[FaseSertão] Um Cangaceiro apareceu e atacou o jogador!");
+    }
+}
+
+abstract class LocalizacaoJogo {
+    public abstract Inimigo criarInimigo();
+
+    public void iniciarCombate() {
+        Inimigo inimigo = criarInimigo();
+        inimigo.atacar();
+    }
+}
+
+class AmazoniaFase extends LocalizacaoJogo {
+    @Override
+    public Inimigo criarInimigo() {
+        return new AnimalMutante();
+    }
+}
+
+class SertaoFase extends LocalizacaoJogo {
+    @Override
+    public Inimigo criarInimigo() {
+        return new Cangaceiro();
+    }
+}
